@@ -129,7 +129,8 @@ do
 
     echo " Creating the TrackerMap.... "
 
-    cmsRun ${CMSSW_BASE}/src/DQM/SiStripMonitorClient/test/SiStripDQM_OfflineTkMap_Template_cfg_DB.py print globalTag=${GLOBALTAG} runNumber=${Run_numb} dqmFile=${file_path}/$dqmFileName  # update GlobalTag
+    detIdInfoFileName=`echo TkDetIdInfo_Run${Run_numb}_${thisDataset}.root`
+    cmsRun ${CMSSW_BASE}/src/DQM/SiStripMonitorClient/test/SiStripDQM_OfflineTkMap_Template_cfg_DB.py print globalTag=${GLOBALTAG} runNumber=${Run_numb} dqmFile=${file_path}/$dqmFileName detIdInfoFile=${detIdInfoFileName} # update GlobalTag
 
 # rename bad module list file
 
