@@ -106,19 +106,20 @@ process.siStripOfflineAnalyser = cms.EDAnalyzer("SiStripOfflineDQM",
           mapMin            = cms.untracked.double(0.),
           meanToMaxFact     = cms.untracked.double(2.5)
        ),
-       TkMapOptions             = cms.untracked.VPSet(
-    cms.PSet(mapName=cms.untracked.string('QTestAlarm'),fedMap=cms.untracked.bool(True),useSSQuality=cms.untracked.bool(True),ssqLabel=cms.untracked.string(""),psuMap=cms.untracked.bool(True),loadLVCabling=cms.untracked.bool(True),mapMax=cms.untracked.double(1.)),
-    cms.PSet(mapName=cms.untracked.string('FractionOfBadChannels'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True)),
-    cms.PSet(mapName=cms.untracked.string('NumberOfCluster')),
-    cms.PSet(mapName=cms.untracked.string('NumberOfDigi')),
-    cms.PSet(mapName=cms.untracked.string('NumberOfOfffTrackCluster')),
-    cms.PSet(mapName=cms.untracked.string('NumberOfOfffTrackCluster'),mapSuffix=cms.untracked.string("_autoscale"),mapMax=cms.untracked.double(-1.)),
-    cms.PSet(mapName=cms.untracked.string('NumberOfOnTrackCluster')),
-    cms.PSet(mapName=cms.untracked.string('StoNCorrOnTrack')),
-    cms.PSet(mapName=cms.untracked.string('NApvShots'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True)),
-#    cms.PSet(mapName=cms.untracked.string('NApvShots'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True),psuMap=cms.untracked.bool(True),loadLVCabling=cms.untracked.bool(True)),
-    cms.PSet(mapName=cms.untracked.string('MedianChargeApvShots'),mapMax=cms.untracked.double(-1.))
-    )
+
+     TkMapOptions             = cms.untracked.VPSet(
+        cms.PSet(mapName=cms.untracked.string('QTestAlarm'),fedMap=cms.untracked.bool(True),useSSQuality=cms.untracked.bool(True),ssqLabel=cms.untracked.string(""),psuMap=cms.untracked.bool(True),loadLVCabling=cms.untracked.bool(True),mapMax=cms.untracked.double(1.),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('FractionOfBadChannels'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NumberOfCluster'),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NumberOfDigi'),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NumberOfOfffTrackCluster'),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NumberOfOfffTrackCluster'),mapSuffix=cms.untracked.string("_autoscale"),mapMax=cms.untracked.double(-1.),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NumberOfOnTrackCluster'),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('StoNCorrOnTrack'),RunNumber=cms.untracked.uint64(options.runNumber)),
+        cms.PSet(mapName=cms.untracked.string('NApvShots'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True),RunNumber=cms.untracked.uint64(options.runNumber)),
+        #    cms.PSet(mapName=cms.untracked.string('NApvShots'),mapMax=cms.untracked.double(-1.),logScale=cms.untracked.bool(True),psuMap=cms.untracked.bool(True),loadLVCabling=cms.untracked.bool(True)),
+        cms.PSet(mapName=cms.untracked.string('MedianChargeApvShots'),mapMax=cms.untracked.double(-1.),RunNumber=cms.untracked.uint64(options.runNumber))
+        )
 )
 
 # Services needed for TkHistoMap / DetIdInfoFile
@@ -143,7 +144,8 @@ process.siStripQualityESProducer.ListOfRecordToMerge=cms.VPSet(
 process.ssqualitystat = cms.EDAnalyzer("SiStripQualityStatistics",
                                        dataLabel = cms.untracked.string(""),
                                        TkMapFileName = cms.untracked.string("PCLBadComponents.png"),  #available filetypes: .pdf .png .jpg .svg
-                                       SaveTkHistoMap = cms.untracked.bool(False)
+                                       SaveTkHistoMap = cms.untracked.bool(False),
+                                       RunNumber=cms.untracked.uint64(options.runNumber)
                               )
 
 
