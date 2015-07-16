@@ -148,14 +148,16 @@ void SiStripTrackerMapCreator::createForOffline(const edm::ParameterSet & tkmapP
   bool tkMapPSU = tkmapPset.getUntrackedParameter<bool>("psuMap",false);
   bool tkMapFED = tkmapPset.getUntrackedParameter<bool>("fedMap",false);
   std::string namesuffix = tkmapPset.getUntrackedParameter<std::string>("mapSuffix",""); 
+
+  std::string tmap_title = " Tracker Map from  " + map_type;
   unsigned long long runNumber_ = tkmapPset.getUntrackedParameter<unsigned long long>("RunNumber",0);
 
   std::stringstream ss;
   ss << runNumber_;
   sRunNumber = ss.str();
-  std::string tmap_title;
-  if      (runNumber_>0)  { tmap_title = " Run: " + sRunNumber + ", Tracker Map from " + map_type; }
-  else                    { tmap_title = " Tracker Map from " + map_type; }
+  //std::string tmap_title;
+  //if      (runNumber_>0)  { tmap_title = " Run: " + sRunNumber + ", Tracker Map from " + map_type; }
+  //else                    { tmap_title = " Tracker Map from " + map_type; }
   trackerMap_->setTitle(tmap_title);
 
   if (map_type == "QTestAlarm") {

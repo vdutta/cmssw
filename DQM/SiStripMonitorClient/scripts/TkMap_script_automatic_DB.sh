@@ -32,7 +32,7 @@ do
     #2015 Commissioning period (since January)
     if [ $Run_numb -gt 232881 ]; then
 	DataLocalDir='Data2015'
-	DataOfflineDir='Commissioning2015'
+	DataOfflineDir='Run2015'
     else
     #2013 pp run (2.76 GeV)
 	if [ $Run_numb -gt 211658 ]; then
