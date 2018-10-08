@@ -25,6 +25,7 @@
 <use   name="PhysicsTools/JetMCUtils"/>
 <use   name="CommonTools/Utils"/>
 <use   name="FastSimulation/BaseParticlePropagator"/>
+<use   name="PhysicsTools/TensorFlow"/>
 <use   name="FastSimulation/Particle"/>
 <use   name="roottmva"/>
 <export>
